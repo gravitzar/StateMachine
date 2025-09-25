@@ -1,0 +1,16 @@
+[versions]
+agp = "8.13.0"
+kotlin = "2.2.20"
+android-minSdk = "24"
+android-compileSdk = "36"
+kotlinxCoroutine = "1.10.2"
+
+[libraries]
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
+# Coroutine
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutine" }
+
+[plugins]
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
