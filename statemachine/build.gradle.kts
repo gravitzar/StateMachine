@@ -4,10 +4,11 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    id("maven-publish")
 }
 
 group = "dev.akhil.statemachine"
-version = "1.0.0"
+version = "1.0.1"
 
 kotlin {
     jvm()
@@ -46,5 +47,19 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "dev.akhil.statemachine"
+            artifactId = "StateMachine"
+            version = "1.0.1"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
     }
 }
